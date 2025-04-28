@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Grid</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'logo-emblem.png' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <img src="{% static 'logo.png' %}" alt="Team Logo" class="logo">
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#upcoming">Upcoming Games</a></li>
+                    <li><a href="#past">Past Games</a></li>
+                    <li><a href="#roster">Roster</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section id="upcoming" class="section">
+            <h2>Upcoming Games</h2>
+            <div id="upcoming-games" class="card-grid">
+                <!-- JS will inject upcoming games here -->
+            </div>
+        </section>
+
+        <section id="past" class="section">
+            <h2>Past Games</h2>
+            <div id="past-games" class="card-grid">
+                <!-- JS will inject past games here -->
+            </div>
+        </section>
+
+        <section id="roster" class="section">
+            <h2>Our Team</h2>
+            <div id="roster-list" class="card-grid">
+                <!-- JS will inject players here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Game Grid. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script> <!-- Optional if you want to add dynamic loading -->
+</body>
+</html>
