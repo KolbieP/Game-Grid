@@ -165,3 +165,70 @@ body {
     gap: 2rem;
     padding: 0 2rem;
 }
+
+.roster-table {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    border: 2px solid #3A86FF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 39, 102, 0.2);
+}
+
+.roster-table th, .roster-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.roster-table th {
+    background-color: #002766;
+    color: #C0C0C0;
+    font-weight: bold;
+}
+
+.roster-table tr:hover {
+    background-color: #F0F8FF;
+}
+
+.roster-table td {
+    font-size: 1rem;
+    color: #000000;
+}
+
+
+.teamstats-table {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    border: 2px solid #3A86FF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 39, 102, 0.2);
+}
+
+.teamstats-table th, .teamstats-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.teamstats-table th {
+    background-color: #002766;
+    color: #C0C0C0;
+    font-weight: bold;
+}
+
+.teamstats-table tr:hover {
+    background-color: #F0F8FF;
+}
+
+.teamstats-table td {
+    font-size: 1rem;
+    color: #000000;
+}

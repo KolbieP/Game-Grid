@@ -20,12 +20,12 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class PlayerGameStatsSerializer(serializers.ModelSerializer):
-    player_name = serializers.SerializerMethodField()
-    game_details = serializers.SerializerMethodField()
+    player_name = serializers.SerializerMethodField(read_only=True)
+    game_details = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = PlayerGameStats
-        fields = ['player_name', 'game_details', 'goals', 'assists', 'penalties'] 
+        fields = ['player', 'game', 'player_name', 'game_details', 'goals', 'assists', 'penalties']
 
     def get_player_name(self, obj):
         return f"{obj.player.first_name} {obj.player.last_name}"
