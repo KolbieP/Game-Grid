@@ -1,7 +1,15 @@
 async function fetchGames() {
-    const response = await fetch('/api/games/');
-    const data = await response.json();
-    return data.results;
+    let allGames = [];
+    let url = '/api/games/';
+
+    while (url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        allGames = allGames.concat(data.results);
+        url = data.next;
+    }
+
+    return allGames;
 }
 
 function filterUpcomingGames(games) {
@@ -52,35 +60,41 @@ function displayPastGames(pastGames) {
     });
 }
 
-function setupCarousel(containerId) {
-    const container = document.getElementById(containerId);
-    const prevBtn = container.parentElement.querySelector('.prev');
-    const nextBtn = container.parentElement.querySelector('.next');
 
-    if (container.children.length > 4) {
-        prevBtn.style.display = 'block';
-        nextBtn.style.display = 'block';
+function setupCarousel(trackId, prevBtnClass, nextBtnClass) {
+    const track = document.getElementById(trackId);
+    const prevBtn = document.querySelector('.' + prevBtnClass);
+    const nextBtn = document.querySelector('.' + nextBtnClass);
 
-        let scrollAmount = 0;
-        const scrollStep = container.firstChild.offsetWidth + 20; // card width + gap
+    let currentSlide = 0;
+    const card = track.querySelector('.card');
+    const slideWidth = card ? card.offsetWidth + 32 : 300; 
+    const totalCards = track.querySelectorAll('.card').length;
+    const viewport = track.parentElement;
+    const cardsPerView = Math.floor(viewport.offsetWidth / (card.offsetWidth + 32));
 
-        nextBtn.addEventListener('click', () => {
-            container.scrollBy({ left: scrollStep, behavior: 'smooth' });
-        });
+    const maxSlide = totalCards - cardsPerView;
 
-        prevBtn.addEventListener('click', () => {
-            container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-        });
-    }
+    prevBtn.addEventListener('click', () => {
+        currentSlide = Math.max(currentSlide - 1, 0);
+        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentSlide = Math.min(currentSlide + 1, maxSlide);
+        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    });
 }
+
 
 document.addEventListener('DOMContentLoaded', async () => {
     const games = await fetchGames();
     const upcomingGames = filterUpcomingGames(games);
     const pastGames = filterPastGames(games);
+
     displayUpcomingGames(upcomingGames);
     displayPastGames(pastGames);
 
-    setupCarousel('upcoming-games');
-    setupCarousel('past-games');
+    setupCarousel('upcoming-games', 'prev-upcoming', 'next-upcoming');
+    setupCarousel('past-games', 'prev-past', 'next-past');
 });
