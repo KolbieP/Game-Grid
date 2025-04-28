@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'logo-emblem.png' %}">
 </head>
+
 <body>
     <header class="site-header">
         <div class="container">
@@ -25,15 +27,25 @@
     <main class="site-main">
         <section id="upcoming" class="section">
             <h2>Upcoming Games</h2>
-            <div id="upcoming-games" class="card-grid">
-                <!-- JS will inject upcoming games here -->
+            <div class="carousel-container">
+                <button class="carousel-btn prev" style="display:none;">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div id="upcoming-games" class="card-grid">
+                    </div>
+                </div>
+                <button class="carousel-btn next" style="display:none;">&#10095;</button>
             </div>
         </section>
 
         <section id="past" class="section">
             <h2>Past Games</h2>
-            <div id="past-games" class="card-grid">
-                <!-- JS will inject past games here -->
+            <div class="carousel-container">
+                <button class="carousel-btn prev" style="display:none;">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div id="past-games" class="card-grid">
+                    </div>
+                </div>
+                <button class="carousel-btn next" style="display:none;">&#10095;</button>
             </div>
         </section>
 
@@ -51,6 +63,7 @@
         </div>
     </footer>
 
-    <script src="{% static 'script.js' %}"></script> <!-- Optional if you want to add dynamic loading -->
+    <script src="{% static 'script.js' %}"></script>
 </body>
+
 </html>
