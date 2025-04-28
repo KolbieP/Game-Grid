@@ -19,8 +19,14 @@ class Player(models.Model):
     
     
 class Game(models.Model):
+    LOCATION_CHOICES = [
+        ('A', 'Away'),
+        ('H', 'Home'),
+    ]
+
     opponent = models.CharField(max_length=200)
     date = models.DateField()
+    location = models.CharField(max_length=1, choices=LOCATION_CHOICES, default='H')
 
     def __str__(self):
         return f"vs {self.opponent} on {self.date}"

@@ -14,14 +14,17 @@ async function fetchGames() {
 
 function filterUpcomingGames(games) {
     const today = new Date();
-    return games.filter(game => {
-        const gameDate = new Date(game.date);
-        return gameDate >= today;
-    });
+    return games
+        .filter(game => {
+            const gameDate = new Date(game.date);
+            return gameDate >= today;
+        })
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
 }
 
 function displayUpcomingGames(upcomingGames) {
     const container = document.getElementById('upcoming-games');
+    const locationMap = { 'H': 'Home', 'A': 'Away' };
     container.innerHTML = '';
 
     upcomingGames.forEach(game => {
@@ -30,7 +33,7 @@ function displayUpcomingGames(upcomingGames) {
         card.innerHTML = `
     <h3>vs ${game.opponent}</h3>
     <p>${new Date(game.date).toLocaleDateString()}</p>
-    <p>${game.location}</p>
+    <p>${locationMap[game.location] || 'Unknown'}</p>
 `;
         container.appendChild(card);
     });
@@ -38,14 +41,17 @@ function displayUpcomingGames(upcomingGames) {
 
 function filterPastGames(games) {
     const today = new Date();
-    return games.filter(game => {
-        const gameDate = new Date(game.date);
-        return gameDate <= today;
-    });
+    return games
+        .filter(game => {
+            const gameDate = new Date(game.date);
+            return gameDate <= today;
+        })
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 function displayPastGames(pastGames) {
     const container = document.getElementById('past-games');
+    const locationMap = { 'H': 'Home', 'A': 'Away' };
     container.innerHTML = '';
 
     pastGames.forEach(game => {
@@ -54,7 +60,7 @@ function displayPastGames(pastGames) {
         card.innerHTML = `
     <h3>vs ${game.opponent}</h3>
     <p>${new Date(game.date).toLocaleDateString()}</p>
-    <p>${game.location}</p>
+    <p>${locationMap[game.location] || 'Unknown'}</p>
 `;
         container.appendChild(card);
     });

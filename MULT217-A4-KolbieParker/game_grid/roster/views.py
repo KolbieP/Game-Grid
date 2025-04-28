@@ -34,8 +34,8 @@ class PlayerViewSet(viewsets.ModelViewSet):
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all().order_by('id')
     serializer_class = GameSerializer
-    ordering_fields = ['opponent', 'date']
-    search_fields = ['opponent', 'date']
+    ordering_fields = ['opponent', 'date', 'location']
+    search_fields = ['opponent', 'date', 'location']
       
     def get_permissions(self):
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
