@@ -112,7 +112,7 @@ async function fetchRoster() {
 }
 
 function displayRoster(players) {
-    players.sort((a, b) => (a.number || 0) - (b.number || 0));
+    players.sort((a, b) => (a.jersey_number || 0) - (b.jersey_number || 0));
     const container = document.getElementById('roster-list');
     container.innerHTML = `
         <table class="roster-table">

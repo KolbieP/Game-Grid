@@ -199,7 +199,7 @@ body {
     color: #000000;
 }
 
-
+/* Card Grid (for Team Stats) */
 .teamstats-table {
     width: 90%;
     max-width: 800px;
@@ -231,4 +231,39 @@ body {
 .teamstats-table td {
     font-size: 1rem;
     color: #000000;
+}
+
+/* homepage intro */
+.homepage-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    gap: 50px; 
+}
+
+.hero-text {
+    flex: 0 0 auto; 
+    text-align: right; 
+}
+
+.hero-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    color: #555;
+    max-width: 400px;
+}
+
+.hero-logo {
+    flex: 0 0 auto; 
+    text-align: left;
+}
+
+.hero-logo img {
+    max-width: 200px;
+    height: auto;
 }
