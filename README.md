@@ -1,5 +1,6 @@
 <h1>🏒 Game Grid</h1>
   <p><strong>Game Grid</strong> is a dynamic web application built with Django that allows teams to track and visualize hockey statistics including player performance, team rosters, and game outcomes. It was developed as part of an interactive web development course project.</p>
+  <p><a href="https://krparker.pythonanywhere.com/" target="_blank">View the Project!</a></p>
 
 <h2>Features</h2>
   <ul>
